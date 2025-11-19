@@ -579,6 +579,23 @@ export const setupQuestions: Question[] = [
         category: 'Third-Party Services'
     },
     {
+        id: 'ai-strategy-copilot',
+        title: 'Do you want to enable an AI Copilot for strategy design and monitoring?',
+        description:
+            'The AI Copilot can analyze portfolios, detect anomalies, propose rebalancing, and draft investment memos. Select all modules you want to activate.',
+        type: 'multi-select',
+        options: [
+            'AI Rebalancing Assistant (suggests optimal weights in real-time)',
+            'AI Market Intelligence Bot (summaries, alerts, and regime detection)',
+            'AI Risk & Exposure Monitor (flags concentration and regulatory issues)',
+            'AI Investment Memo Generator (drafts strategy updates automatically)',
+            'None - no AI assistance needed'
+        ],
+        required: true,
+        category: 'Strategy Automation'
+    },
+
+    {
         id: 'tax-tools',
         title: 'Do you want to integrate automated tax reporting tools?',
         type: 'radio',
