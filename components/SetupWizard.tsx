@@ -234,8 +234,9 @@ export function SetupWizard() {
 
                         <h1 className="text-5xl mb-4">Setup Complete!</h1>
                         <p className="text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto">
-                            You've configured your investment platform with Valuya. Our team will review your setup and
-                            be in touch within 24 hours to start implementation.
+                            You've configured your investment platform with Valuya. The Investment Platform is being
+                            generated. You will receive an E-Mail with Access to the Admin Dashboard within the next
+                            five Minutes.
                         </p>
                     </motion.div>
 
