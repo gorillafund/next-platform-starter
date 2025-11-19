@@ -1,44 +1,25 @@
 /** @type {import('next').NextConfig} */
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const nextConfig = {
-  reactCompiler: true,
-  
-  redirects() {
-    return [
-      {
-        source: '/docs',
-        destination: 'https://docs.netlify.com/frameworks/next-js/overview/',
-        permanent: false,
-      },
-      {
-        source: '/old-blog/:slug',
-        destination: '/classics',
-        permanent: true,
-      },
-      {
-        source: '/github',
-        destination: 'https://github.com/netlify-templates/next-platform-starter',
-        permanent: false,
-      },
-      {
-        source: '/home',
-        destination: '/',
-        permanent: true,
-      },
-    ];
-  },
-  
-  rewrites() {
-    return [
-      {
-        source: '/api/health',
-        destination: '/quotes/random',
-      },
-      {
-        source: '/blog',
-        destination: '/classics',
-      },
-    ];
-  },
+    turbopack: {
+        // Force Turbopack to treat THIS folder as the root
+        root: __dirname
+    },
+    webpack: (config) => {
+        // Extra safety for Webpack watcher: ignore big / irrelevant dirs
+        config.watchOptions = {
+            ignored: [
+                '**/node_modules/**',
+                '**/.git/**',
+                '/home/**' // you can keep or remove this line, depending on taste
+            ]
+        };
+        return config;
+    }
 };
 
 export default nextConfig;
