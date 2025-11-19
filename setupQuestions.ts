@@ -200,7 +200,7 @@ export const setupQuestions: Question[] = [
         type: 'radio',
         options: [
             'Third-party institutional custodian (recommended)',
-            'Self-custody with managed keys',
+            'Self-custody with managed keys → (for professional-only setups)',
             'Hybrid custody model',
             'I already have a custody provider'
         ],
@@ -361,7 +361,7 @@ export const setupQuestions: Question[] = [
             'Certificates (Tracker Certificates)',
             'Notes (Debt instruments)',
             'Tokenized funds',
-            'Direct token ownership (no wrapper)',
+            'Direct token ownership (no wrapper) → (Requires appropriate licensing – optional)',
             'Other structured products',
             'Not decided yet'
         ],
