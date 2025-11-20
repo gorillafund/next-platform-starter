@@ -574,7 +574,7 @@ export const setupQuestions: Question[] = [
         title: 'Which ratings and risk assessment providers do you want to integrate?',
         description: 'Select all that apply',
         type: 'multi-select',
-        options: ['Particula Ratings', 'Bluechip Ratings', 'None - use internal risk assessment'],
+        options: ['Bluechip Ratings', 'None - use internal risk assessment'],
         required: true,
         category: 'Third-Party Services'
     },
