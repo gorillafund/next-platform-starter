@@ -1,0 +1,276 @@
+/* ./themes/valuya.css  — Valuya “Trust‑Blue” (Enhanced)
+   ⓘ Uses your default naming & layers. Only overrides tokens; components keep working.
+   Goals:
+   - Keep Valuya brand blues + teal, neutral greys
+   - Add refined elevation, borders, radii, focus, and selection (premium feel)
+   - Provide common component tokens (cards, buttons, nav) without breaking API
+*/
+
+@layer theme {
+    :root {
+        /* ========= CORE BRAND RAMPS ========= */
+
+        /* Valuya blue (primary / accent) */
+        --color-blue-100: #eaf0ff;
+        --color-blue-200: #d7e2ff;
+        --color-blue-300: #b6c8ff;
+        --color-blue-400: #8ea9ff;
+        --color-blue-500: #5e83ff;
+        --color-blue-600: #3b65ff; /* primary */
+        --color-blue-700: #244fe6;
+        --color-blue-800: #1a3db6;
+        --color-blue-900: #142f8a;
+        --color-blue-1000: #0f2466;
+        --color-blue-1100: #0b1a49;
+        --color-blue-1200: #081333;
+
+        /* Secondary teal (kept cool & professional) */
+        --color-teal-100: #e6f7fb;
+        --color-teal-200: #d0f0f7;
+        --color-teal-300: #a8e3ee;
+        --color-teal-400: #7bd4e5;
+        --color-teal-500: #3cc3da;
+        --color-teal-600: #06b6d4; /* secondary */
+        --color-teal-700: #0694ad;
+        --color-teal-800: #0a7488;
+        --color-teal-900: #0c5869;
+        --color-teal-1000: #0b4050;
+        --color-teal-1100: #0a2c37;
+        --color-teal-1200: #071f29;
+
+        /* Neutral greys: crisp UI, good contrast */
+        --color-white: #ffffff; /* ensure available */
+        --color-grey-100: #ffffff;
+        --color-grey-200: #f8fafc;
+        --color-grey-300: #eef2f7;
+        --color-grey-400: #e2e8f0;
+        --color-grey-500: #c9d1db;
+        --color-grey-600: #9aa3b1;
+        --color-grey-700: #6b7280;
+        --color-grey-800: #4b5563;
+        --color-grey-900: #334155;
+        --color-grey-1000: #1f2937;
+        --color-grey-1100: #111827;
+        --color-grey-1200: #0b1220;
+
+        /* Gold (used for “important” highlights, not the primary) */
+        --color-yellow-100: #fff7e5;
+        --color-yellow-200: #ffeed0;
+        --color-yellow-300: #ffe2ad;
+        --color-yellow-400: #ffd181;
+        --color-yellow-500: #f3bf48; /* accent gold */
+        --color-yellow-600: #d9a73a;
+        --color-yellow-700: #bb8a2d;
+        --color-yellow-800: #936b22;
+        --color-yellow-900: #6e5019;
+        --color-yellow-1000: #4e3912;
+        --color-yellow-1100: #37290d;
+        --color-yellow-1200: #241b09;
+
+        /* ========= SEMANTIC ALIASES ========= */
+        /* Accent = Valuya blue (primary). Teal remains available via its ramp. */
+        --color-accent-100: var(--color-blue-100);
+        --color-accent-200: var(--color-blue-200);
+        --color-accent-300: var(--color-blue-300);
+        --color-accent-400: var(--color-blue-400);
+        --color-accent-500: var(--color-blue-500);
+        --color-accent-600: var(--color-blue-600);
+        --color-accent-700: var(--color-blue-700);
+        --color-accent-800: var(--color-blue-800);
+        --color-accent-900: var(--color-blue-900);
+        --color-accent-1000: var(--color-blue-1000);
+        --color-accent-1100: var(--color-blue-1100);
+        --color-accent-1200: var(--color-blue-1200);
+
+        --color-neutral-100: var(--color-grey-100);
+        --color-neutral-200: var(--color-grey-200);
+        --color-neutral-300: var(--color-grey-300);
+        --color-neutral-400: var(--color-grey-400);
+        --color-neutral-500: var(--color-grey-500);
+        --color-neutral-600: var(--color-grey-600);
+        --color-neutral-700: var(--color-grey-700);
+        --color-neutral-800: var(--color-grey-800);
+        --color-neutral-900: var(--color-grey-900);
+        --color-neutral-1000: var(--color-grey-1000);
+        --color-neutral-1100: var(--color-grey-1100);
+        --color-neutral-1200: var(--color-grey-1200);
+
+        /* Important (gold), Negative (red), Positive (green) keep your default structure. */
+        --color-important-100: var(--color-yellow-100);
+        --color-important-200: var(--color-yellow-200);
+        --color-important-300: var(--color-yellow-300);
+        --color-important-400: var(--color-yellow-400);
+        --color-important-500: var(--color-yellow-500);
+        --color-important-600: var(--color-yellow-600);
+        --color-important-700: var(--color-yellow-700);
+        --color-important-800: var(--color-yellow-800);
+        --color-important-900: var(--color-yellow-900);
+        --color-important-1000: var(--color-yellow-1000);
+        --color-important-1100: var(--color-yellow-1100);
+        --color-important-1200: var(--color-yellow-1200);
+
+        /* Optional semantic shortcuts used by components (non‑breaking) */
+        --color-success-600: #157f59; /* matches premium emerald tone */
+        --color-info-600: #1f66c2; /* calm info blue */
+        --color-danger-600: #b03a3a; /* subdued error */
+
+        /* ========= SURFACES & TEXT ========= */
+        --color-surface-backdrop: var(--color-blue-100);
+        --color-surface-backdrop-invert: var(--color-neutral-1100);
+        --color-surface-mainContainer: var(--color-white);
+        --color-surface-mainContainer-invert: var(--color-neutral-1000);
+        --color-surface-overlay: var(--color-white);
+        --color-surface-overlay-invert: var(--color-neutral-1000);
+        --color-surface-subContainer: var(--color-white);
+        --color-surface-subContainer-invert: var(--color-neutral-1000);
+
+        --color-text-default: var(--color-neutral-1200);
+        --color-text-heading: var(--color-neutral-1200);
+        --color-text-subtle: var(--color-neutral-800);
+        --color-text-default-invert: var(--color-neutral-300);
+        --color-text-heading-invert: var(--color-neutral-100);
+        --color-text-subtle-invert: var(--color-neutral-700);
+
+        /* Charts */
+        --chart-cursorValue-backgroundColor: var(--color-neutral-300);
+        --chart-cursorValue-strokeColor: var(--color-neutral-700);
+        --chart-cursorValue-borderColor: var(--stroke-color);
+
+        /* ========= TYPOGRAPHY ========= */
+        --font-heading: 'Poppins', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial,
+            'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+        --font-body: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial,
+            'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+
+        /* Type scales (keep compatible with your --text-* if present) */
+        --text-100: 0.8125rem; /* 13 */
+        --text-200: 0.875rem; /* 14 */
+        --text-300: 0.9375rem; /* 15 */
+        --text-400: 1rem; /* 16 */
+        --text-500: 1.125rem; /* 18 */
+        --text-600: 1.25rem; /* 20 */
+        --text-700: 1.5rem; /* 24 */
+        --text-800: 1.875rem; /* 30 */
+        --text-900: 2.25rem; /* 36 */
+
+        /* ========= RADII, BORDERS & STROKE ========= */
+        --radius-xs: 6px;
+        --radius-sm: 10px;
+        --radius-md: 14px;
+        --radius-lg: 18px;
+
+        --stroke-width: 1px; /* finer, more premium */
+        --stroke-color: rgba(15, 36, 102, 0.12); /* derived from brand */
+
+        /* ========= PREMIUM ELEVATION (aligned to reference) ========= */
+        --elevation-100: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.03);
+        --elevation-200: 0 6px 20px rgba(10, 37, 64, 0.08);
+        --elevation-300: 0 10px 30px rgba(10, 37, 64, 0.1), 0 2px 8px rgba(10, 37, 64, 0.06);
+
+        /* ========= FOCUS & SELECTION ========= */
+        --input-focusRing-color: var(--color-accent-600);
+        --focus-ring: 0 0 0 3px rgba(59, 101, 255, 0.18), 0 0 0 1px var(--color-accent-600);
+        --selection-bg: rgba(243, 191, 72, 0.25); /* gold tint */
+        --selection-fg: var(--color-accent-1100);
+
+        /* ========= COMPONENT TOKENS (non‑breaking) ========= */
+        /* Buttons */
+        --button-borderRadius: var(--radius-xs);
+        --button-primary-bg: var(--color-accent-600);
+        --button-primary-bg-hover: var(--color-accent-700);
+        --button-primary-text: #ffffff;
+        --button-primary-ring: var(--focus-ring);
+
+        --button-secondary-bg: #ffffff;
+        --button-secondary-border: var(--stroke-color);
+        --button-secondary-text: var(--color-accent-700);
+        --button-secondary-bg-hover: var(--color-accent-100);
+
+        --button-quiet-text: var(--color-accent-700);
+        --button-quiet-text-hover: var(--color-yellow-600);
+
+        /* Cards & Surfaces */
+        --box-borderRadius: var(--radius-sm);
+        --card-bg: #ffffff;
+        --card-border: var(--stroke-color);
+        --card-shadow: var(--elevation-100);
+
+        /* Navigation */
+        --nav-bg: #ffffff;
+        --nav-border: var(--stroke-color);
+        --nav-link: var(--color-neutral-800);
+        --nav-link-active: var(--color-accent-700);
+
+        /* Stages / Popovers / Modals */
+        --stage-borderRadius: var(--radius-sm);
+        --stage-elevation: var(--elevation-200);
+        --stage-borderColor: var(--stroke-color);
+        --popover-borderRadius: var(--radius-sm);
+        --modal-borderRadius: var(--radius-sm);
+
+        /* Misc (align with your component tokens) */
+        --tag-borderRadius: var(--radius-xs);
+        --radioTile-borderRadius: var(--radius-xs);
+
+        /* ========= BRAND ASSETS ========= */
+    }
+}
+
+/* ========= Optional presentation helpers (non‑breaking) ========= */
+@layer components {
+    /* Framed product screenshots */
+    .img-frame {
+        background: var(--color-surface-subContainer);
+        border: var(--stroke-width) solid var(--card-border);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--elevation-300);
+        overflow: hidden;
+    }
+    .img-caption {
+        color: var(--color-text-subtle);
+        font-size: var(--text-200);
+        margin-top: 6px;
+    }
+
+    /* Soft brand underlines for section headings */
+    .hx--brand {
+        position: relative;
+    }
+    .hx--brand::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 48px;
+        height: 3px;
+        border-radius: 2px;
+        background: linear-gradient(
+            135deg,
+            var(--color-blue-400) 0%,
+            var(--color-blue-600) 60%,
+            var(--color-blue-800) 100%
+        );
+    }
+
+    /* Helpful primitives */
+    *::selection {
+        background: var(--selection-bg);
+        color: var(--selection-fg);
+    }
+    .button-primary {
+        background: var(--button-primary-bg);
+        color: var(--button-primary-text);
+        border-radius: var(--button-borderRadius);
+        box-shadow: var(--button-primary-ring);
+    }
+    .card {
+        background: var(--card-bg);
+        border: var(--stroke-width) solid var(--card-border);
+        border-radius: var(--box-borderRadius);
+        box-shadow: var(--card-shadow);
+    }
+    .nav a[aria-current='page'],
+    .nav .active {
+        color: var(--nav-link-active);
+    }
+}

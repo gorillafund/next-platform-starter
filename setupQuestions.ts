@@ -589,6 +589,7 @@ export const setupQuestions: Question[] = [
             'AI Market Intelligence Bot (summaries, alerts, and regime detection)',
             'AI Risk & Exposure Monitor (flags concentration and regulatory issues)',
             'AI Investment Memo Generator (drafts strategy updates automatically)',
+            'Let me plugin my own AI trading engine',
             'None - no AI assistance needed'
         ],
         required: true,
