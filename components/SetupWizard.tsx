@@ -143,28 +143,48 @@ export function SetupWizard() {
                     </Select>
                 );
 
-            case 'radio':
+            case 'radio': {
+                const selectedValue = (value as string) || '';
+
                 return (
                     <RadioGroup
-                        value={(value as string) || ''}
+                        value={selectedValue}
                         onValueChange={handleInputChange}
                         className="space-y-3 w-full max-w-xl"
                     >
-                        {currentQuestion.options?.map((option) => (
-                            <motion.div
-                                key={option}
-                                whileHover={{ scale: 1.02, x: 4 }}
-                                whileTap={{ scale: 0.98 }}
-                                className="flex items-start space-x-3 p-4 rounded-lg bg-white/90 backdrop-blur-sm border-2 border-primary/20 hover:border-primary/40 transition-all cursor-pointer"
-                            >
-                                <RadioGroupItem value={option} id={option} className="mt-1" />
-                                <Label htmlFor={option} className="flex-1 cursor-pointer text-lg">
-                                    {option}
-                                </Label>
-                            </motion.div>
-                        ))}
+                        {currentQuestion.options?.map((option) => {
+                            const isSelected = selectedValue === option;
+
+                            return (
+                                <motion.div
+                                    key={option}
+                                    whileHover={{ scale: 1.02, x: 4 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    onClick={() => handleInputChange(option)}
+                                    role="button"
+                                    tabIndex={0}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                            e.preventDefault();
+                                            handleInputChange(option);
+                                        }
+                                    }}
+                                    className={cn(
+                                        'flex items-start space-x-3 p-4 rounded-lg backdrop-blur-sm border-2 transition-all text-left cursor-pointer',
+                                        isSelected
+                                            ? 'bg-primary/10 border-primary'
+                                            : 'bg-white/90 border-primary/20 hover:border-primary/40'
+                                    )}
+                                >
+                                    {/* Make the radio itself purely visual so clicks go via the card */}
+                                    <RadioGroupItem value={option} id={option} className="mt-1 pointer-events-none" />
+                                    <span className="flex-1 text-lg">{option}</span>
+                                </motion.div>
+                            );
+                        })}
                     </RadioGroup>
                 );
+            }
 
             case 'multi-select': {
                 const selectedValues = (value as string[]) || [];
